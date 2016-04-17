@@ -1,10 +1,11 @@
 #!/bin/bash
 #
 # Easy Winrar for Linux
-# v1.1
+# v1.2
 #
 
 	#Detect architecture
+	echo ""
 	if [ -n "$(uname -m | grep 64)" ]; then
 		echo "  Downloading Winrar 5.3.0 for 64bit"
 		winrar="rarlinux-x64-5.3.0.tar.gz"
@@ -27,7 +28,12 @@
 	rm -f $dir/bin/rar
 	rm -f $dir/bin/unrar
 	rm -f /etc/rarfiles.lst
-	rm -f $dir/lib/default.sfx	
+	rm -f $dir/lib/default.sfx
+	
+	rm -f /bin/rar
+	rm -f /bin/unrar
+	rm -f /etc/rarfiles.lst
+	rm -f /lib/default.sfx
 	#Copying rar unrar
 	cp rar unrar $dir/bin
 	cp rarfiles.lst /etc
@@ -36,4 +42,5 @@
 	rm -rf rar
 	rm -f rarlinux*
 	echo "  Done :)"
+	echo ""
 	exit;
