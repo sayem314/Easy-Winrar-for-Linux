@@ -20,18 +20,18 @@
 	wget -q http://rarlab.com/rar/$winrar
 	tar xzf rarlinux*
 	cd rar
-	PREFIX="/usr/local"
-	mkdir -p $PREFIX/bin
-	mkdir -p $PREFIX/lib
+	dir="/usr/local"
+	mkdir -p $dir/bin
+	mkdir -p $dir/lib
 	#Deleting any previous version
-	rm -f $PREFIX/bin/rar
-	rm -f $PREFIX/bin/unrar
+	rm -f $dir/bin/rar
+	rm -f $dir/bin/unrar
 	rm -f /etc/rarfiles.lst
-	rm -f $PREFIX/lib/default.sfx	
+	rm -f $dir/lib/default.sfx	
 	#Copying rar unrar
-	cp rar unrar $(PREFIX)/bin
+	cp rar unrar $dir/bin
 	cp rarfiles.lst /etc
-	cp default.sfx $(PREFIX)/lib
+	cp default.sfx $dir/lib
 	cd /tmp
 	rm -rf rar
 	rm -f rarlinux*
