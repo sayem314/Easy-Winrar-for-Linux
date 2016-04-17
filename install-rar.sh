@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Easy Winrar for Linux
-# v1.0
+# v1.1
 #
 
 	#Detect architecture
@@ -17,17 +17,17 @@
 		exit;
 	fi
 	cd /tmp
-	wget http://rarlab.com/rar/$winrar
+	wget -q http://rarlab.com/rar/$winrar
 	tar xzf rarlinux*
 	cd rar
-	PREFIX=/usr/local
-	mkdir -p $(PREFIX)/bin
-	mkdir -p $(PREFIX)/lib
+	PREFIX="/usr/local"
+	mkdir -p $PREFIX/bin
+	mkdir -p $PREFIX/lib
 	#Deleting any previous version
-	rm -f $(PREFIX)/bin/rar
-	rm -f $(PREFIX)/bin/unrar
+	rm -f $PREFIX/bin/rar
+	rm -f $PREFIX/bin/unrar
 	rm -f /etc/rarfiles.lst
-	rm -f $(PREFIX)/lib/default.sfx	
+	rm -f $PREFIX/lib/default.sfx	
 	#Copying rar unrar
 	cp rar unrar $(PREFIX)/bin
 	cp rarfiles.lst /etc
