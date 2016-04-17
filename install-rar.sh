@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Easy Winrar for Linux
-# v1.2
+# v1.4
 #
 
 	#Detect architecture
@@ -22,22 +22,15 @@
 	tar xzf rarlinux*
 	cd rar
 	dir="/usr/local"
-	mkdir -p $dir/bin
-	mkdir -p $dir/lib
 	#Deleting any previous version
-	rm -f $dir/bin/rar
-	rm -f $dir/bin/unrar
+	rm -f $dir/bin/rar /usr/bin/rar
+	rm -f $dir/bin/unrar /usr/bin/unrar
 	rm -f /etc/rarfiles.lst
-	rm -f $dir/lib/default.sfx
-	
-	rm -f /bin/rar
-	rm -f /bin/unrar
-	rm -f /etc/rarfiles.lst
-	rm -f /lib/default.sfx
+	rm -f $dir/lib/default.sfx /usr/lib/default.sfx
 	#Copying rar unrar
-	cp rar unrar $dir/bin
+	cp rar unrar /usr/bin
 	cp rarfiles.lst /etc
-	cp default.sfx $dir/lib
+	cp default.sfx /usr/lib
 	cd /tmp
 	rm -rf rar
 	rm -f rarlinux*
