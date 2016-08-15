@@ -8,10 +8,10 @@
 	echo ""
 	if [ -n "$(uname -m | grep 64)" ]; then
 		echo "  Downloading Winrar 5.3.0 for 64bit"
-		winrar="rarlinux-x64-5.3.0.tar.gz"
+		winrar="rarlinux-x64-5.4.b4.tar.gz"
 	elif [ -n "$(uname -m | grep 86)" ]; then
 		echo "  Downloading Winrar 5.3.0 for 32bit"
-		winrar="rarlinux-5.3.0.tar.gz"
+		winrar="rarlinux-5.4.b4.tar.gz"
 	else
 		echo "  unsupported or unknown architecture"
 		echo ""
