@@ -7,11 +7,11 @@
 	#Detect architecture
 	echo ""
 	if [ -n "$(uname -m | grep 64)" ]; then
-		echo "  Downloading Winrar 5.3.0 for 64bit"
-		winrar="rarlinux-x64-5.4.tar.gz"
+		echo "  Downloading Winrar 5.4.0 for 64bit"
+		winrar="rarlinux-x64-5.4.0.tar.gz"
 	elif [ -n "$(uname -m | grep 86)" ]; then
-		echo "  Downloading Winrar 5.3.0 for 32bit"
-		winrar="rarlinux-5.4.tar.gz"
+		echo "  Downloading Winrar 5.4.0 for 32bit"
+		winrar="rarlinux-5.4.0.tar.gz"
 	else
 		echo "  unsupported or unknown architecture"
 		echo ""
