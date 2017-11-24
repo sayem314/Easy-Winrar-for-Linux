@@ -1,39 +1,45 @@
 #!/bin/bash
 #
 # Easy Winrar for Linux
-# v1.5
+# v1.6
 #
 
-	#Detect architecture
-	echo ""
-	if [ -n "$(uname -m | grep 64)" ]; then
-		echo "  Downloading Winrar 5.4.0 for 64bit"
-		winrar="rarlinux-x64-5.4.0.tar.gz"
-	elif [ -n "$(uname -m | grep 86)" ]; then
-		echo "  Downloading Winrar 5.4.0 for 32bit"
-		winrar="rarlinux-5.4.0.tar.gz"
-	else
-		echo "  unsupported or unknown architecture"
-		echo ""
-		exit;
-	fi
-	cd /tmp
-	wget -q http://rarlab.com/rar/$winrar
-	tar xzf rarlinux*
-	cd rar
-	dir="/usr/local"
-	#Deleting any previous version
-	rm -f $dir/bin/rar /usr/bin/rar /bin/rar
-	rm -f $dir/bin/unrar /usr/bin/unrar /bin/unrar
-	rm -f /etc/rarfiles.lst
-	rm -f $dir/lib/default.sfx /usr/lib/default.sfx /lib/default.sfx
-	#Copying rar unrar
-	cp rar unrar /bin
-	cp rarfiles.lst /etc
-	cp default.sfx /lib
-	cd /tmp
-	rm -rf rar
-	rm -f rarlinux*
-	echo "  Done :)"
+CV="5.5.0"
+DIR="/usr/local"
+
+echo ""
+
+# Detect architecture
+if uname -m | grep -q 64; then
+	echo "  Downloading Winrar $CV for 64bit"
+	winrar="rarlinux-x64-$CV"
+elif uname -m | grep -q 86; then
+	echo "  Downloading Winrar $CV for 32bit"
+	winrar="rarlinux-$CV"
+else
+	echo "  unsupported or unknown architecture"
 	echo ""
 	exit;
+fi
+
+# Download winrar
+cd /tmp || exit
+wget -q http://rarlab.com/rar/$winrar.tar.gz
+tar -xzf rarlinux* && cd rar || exit
+
+# Deleting any previous version
+rm -f $DIR/bin/rar /usr/bin/rar /bin/rar
+rm -f $DIR/bin/unrar /usr/bin/unrar /bin/unrar
+rm -f /etc/rarfiles.lst
+rm -f $DIR/lib/default.sfx /usr/lib/default.sfx /lib/default.sfx
+
+# Copying rar unrar
+cp rar unrar /bin
+cp rarfiles.lst /etc
+cp default.sfx /lib
+cd /tmp || exit
+rm -rf rar
+rm -f rarlinux*
+echo "  Done :)"
+echo ""
+exit;
