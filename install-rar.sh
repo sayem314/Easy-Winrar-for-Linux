@@ -1,10 +1,10 @@
 #!/bin/bash
 #
 # Easy Winrar for Linux
-# v1.6
+# v1.7
 #
 
-CV="5.5.0"
+CV="6.0.1"
 DIR="/usr/local"
 
 echo ""
@@ -19,13 +19,13 @@ elif uname -m | grep -q 86; then
 else
 	echo "  unsupported or unknown architecture"
 	echo ""
-	exit;
+	exit 1;
 fi
 
 # Download winrar
-cd /tmp || exit
+cd /tmp || exit 1
 wget -q http://rarlab.com/rar/$winrar.tar.gz
-tar -xzf rarlinux* && cd rar || exit
+tar -xzf rarlinux* && cd rar || exit 1
 
 # Deleting any previous version
 rm -f $DIR/bin/rar /usr/bin/rar /bin/rar
@@ -37,9 +37,9 @@ rm -f $DIR/lib/default.sfx /usr/lib/default.sfx /lib/default.sfx
 cp rar unrar /bin
 cp rarfiles.lst /etc
 cp default.sfx /lib
-cd /tmp || exit
+cd /tmp || exit 1
 rm -rf rar
 rm -f rarlinux*
 echo "  Done :)"
 echo ""
-exit;
+exit 0;
